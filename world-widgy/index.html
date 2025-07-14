@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>World Widgy</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFFBFE">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzRGMzc4QiIvPjx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1zaXplPSI1MCIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5XPC90ZXh0Pjwvc3ZnPg==">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Material 3 Baseline Light Theme (with contrast improvements) */
+        --primary: #4F378B;
+        --on-primary: #FFFFFF;
+        --primary-container: #EADDFF;
+        --on-primary-container: #21005D;
+        
+        --secondary: #625B71;
+        --on-secondary: #FFFFFF;
+        --secondary-container: #E8DEF8;
+        --on-secondary-container: #1D192B;
+
+        --tertiary: #7D5260;
+        --on-tertiary: #FFFFFF;
+        --tertiary-container: #FFD8E4;
+        --on-tertiary-container: #31111D;
+        
+        --error: #B3261E;
+        --on-error: #FFFFFF;
+        --error-container: #F9DEDC;
+        --on-error-container: #410E0B;
+        
+        --background: #FFFBFE;
+        --on-background: #1C1B1F;
+        
+        --surface: #FFFBFE;
+        --on-surface: #1C1B1F;
+        --surface-variant: #E7E0EC;
+        --on-surface-variant: #444746;
+        
+        --outline: #79747E;
+        --outline-variant: #CAC4D0;
+        
+        --shadow: #000000;
+        --scrim: #000000;
+        
+        --surface-dim: #DED8E1;
+        --surface-bright: #FFFBFE;
+        --surface-container-lowest: #FFFFFF;
+        --surface-container-low: #F7F2FA;
+        --surface-container: #F3EDF7;
+        --surface-container-high: #EEE8F4;
+        --surface-container-highest: #E6E0E9;
+
+        /* Fallbacks for glass effects */
+        --picker-surface-bg: rgba(243, 237, 247, 0.92);
+        --picker-surface-border: rgba(121, 116, 126, 0.2);
+
+        /* Fallbacks for liquid glass */
+        --surface-container-highest-rgb: 230, 224, 233;
+        --on-background-rgb: 28, 27, 31;
+        --primary-rgb: 79, 55, 139;
+        --shadow-rgb: 0, 0, 0;
+      }
+
+      html.dark {
+        /* Material 3 Baseline Dark Theme */
+        --primary: #D0BCFF;
+        --on-primary: #381E72;
+        --primary-container: #4F378B;
+        --on-primary-container: #EADDFF;
+        
+        --secondary: #CCC2DC;
+        --on-secondary: #332D41;
+        --secondary-container: #4A4458;
+        --on-secondary-container: #E8DEF8;
+        
+        --tertiary: #EFB8C8;
+        --on-tertiary: #492532;
+        --tertiary-container: #633B48;
+        --on-tertiary-container: #FFD8E4;
+
+        --error: #F2B8B5;
+        --on-error: #601410;
+        --error-container: #8C1D18;
+        --on-error-container: #F9DEDC;
+        
+        --background: #1C1B1F;
+        --on-background: #E6E1E5;
+        
+        --surface: #1C1B1F;
+        --on-surface: #E6E1E5;
+        --surface-variant: #49454F;
+        --on-surface-variant: #CAC4D0;
+        
+        --outline: #938F99;
+        --outline-variant: #49454F;
+        
+        --shadow: #000000;
+        --scrim: #000000;
+
+        --surface-dim: #141218;
+        --surface-bright: #3B383E;
+        --surface-container-lowest: #141218;
+        --surface-container-low: #1C1B1F;
+        --surface-container: #211F26;
+        --surface-container-high: #2B2931;
+        --surface-container-highest: #36343C;
+        
+        /* Fallbacks for glass effects */
+        --picker-surface-bg: rgba(33, 31, 38, 0.92);
+        --picker-surface-border: rgba(147, 143, 153, 0.2);
+
+        /* Fallbacks for liquid glass */
+        --surface-container-highest-rgb: 54, 52, 60;
+        --on-background-rgb: 230, 225, 229;
+        --primary-rgb: 208, 188, 255;
+        --shadow-rgb: 0, 0, 0;
+      }
+
+      .bg-primary { background-color: var(--primary); }
+      .text-on-primary { color: var(--on-primary); }
+      .bg-primary-container { background-color: var(--primary-container); }
+      .text-on-primary-container { color: var(--on-primary-container); }
+      .bg-secondary { background-color: var(--secondary); }
+      .text-on-secondary { color: var(--on-secondary); }
+      .bg-secondary-container { background-color: var(--secondary-container); }
+      .text-on-secondary-container { color: var(--on-secondary-container); }
+      .bg-tertiary { background-color: var(--tertiary); }
+      .text-on-tertiary { color: var(--on-tertiary); }
+      .bg-error { background-color: var(--error); }
+      .text-on-error { color: var(--on-error); }
+      .bg-background { background-color: var(--background); }
+      .text-on-background { color: var(--on-background); }
+      .bg-surface { background-color: var(--surface); }
+      .text-on-surface { color: var(--on-surface); }
+      .bg-surface-variant { background-color: var(--surface-variant); }
+      .text-on-surface-variant { color: var(--on-surface-variant); }
+      .border-outline { border-color: var(--outline); }
+      .border-outline-variant { border-color: var(--outline-variant); }
+      .bg-surface-dim { background-color: var(--surface-dim); }
+      .bg-surface-bright { background-color: var(--surface-bright); }
+      .bg-surface-container-lowest { background-color: var(--surface-container-lowest); }
+      .bg-surface-container-low { background-color: var(--surface-container-low); }
+      .bg-surface-container { background-color: var(--surface-container); }
+      .bg-surface-container-high { background-color: var(--surface-container-high); }
+      .bg-surface-container-highest { background-color: var(--surface-container-highest); }
+      .text-primary { color: var(--primary); }
+      .text-secondary { color: var(--secondary); }
+      .text-tertiary { color: var(--tertiary); }
+      .text-error { color: var(--error); }
+      .text-primary-accent { color: var(--on-primary-container); }
+      html.dark .text-primary-accent { color: var(--primary); }
+      
+      body, .font-poppins { font-family: 'Poppins', sans-serif; }
+      
+      .m3-display-large { font-family: 'Poppins', sans-serif; font-size: 3.5625rem; font-weight: 600; line-height: 4rem; letter-spacing: -0.02em; }
+      .m3-display-medium { font-family: 'Poppins', sans-serif; font-size: 2.8125rem; font-weight: 600; line-height: 3.25rem; letter-spacing: -0.01em; }
+      .m3-display-small { font-family: 'Poppins', sans-serif; font-size: 2.25rem; font-weight: 600; line-height: 2.75rem; }
+      .m3-headline-large { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 600; line-height: 2.5rem; }
+      .m3-headline-medium { font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 600; line-height: 2.25rem; }
+      .m3-headline-small { font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 2rem; }
+      .m3-title-large { font-family: 'Poppins', sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.75rem; }
+      .m3-title-medium { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5rem; letter-spacing: 0.009375em; }
+      .m3-title-small { font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 500; line-height: 1.25rem; letter-spacing: 0.00714em; }
+      .m3-body-large { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.5rem; letter-spacing: 0.01em; }
+      .m3-body-medium { font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 400; line-height: 1.25rem; letter-spacing: 0.01em; }
+      .m3-body-small { font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 400; line-height: 1rem; letter-spacing: 0.02em; }
+      .m3-label-large { font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+      .m3-label-medium { font-family: 'Poppins', sans-serif; font-size: 0.75rem; font-weight: 500; line-height: 1rem; letter-spacing: 0.03em; }
+      .m3-label-small { font-family: 'Poppins', sans-serif; font-size: 0.6875rem; font-weight: 500; line-height: 1rem; letter-spacing: 0.03em; }
+
+      .m3-display-giant { font-family: 'Poppins', sans-serif; font-size: 8rem; font-weight: 700; line-height: 1; letter-spacing: -0.025em; }
+
+      .m3-state-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: currentColor;
+        opacity: 0;
+        transition: opacity 150ms;
+      }
+      button:hover > .m3-state-layer { opacity: 0.08; }
+      button:focus-visible > .m3-state-layer { opacity: 0.12; }
+      button:active > .m3-state-layer { opacity: 0.12; }
+
+      .picker-surface {
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        backdrop-filter: blur(24px) saturate(180%);
+        background-color: var(--picker-surface-bg);
+        border: 1px solid var(--picker-surface-border);
+      }
+      .checkerboard {
+        background-image:
+            linear-gradient(45deg, rgba(var(--outline-rgb), 0.2) 25%, transparent 25%),
+            linear-gradient(-45deg, rgba(var(--outline-rgb), 0.2) 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, rgba(var(--outline-rgb), 0.2) 75%),
+            linear-gradient(-45deg, transparent 75%, rgba(var(--outline-rgb), 0.2) 75%);
+        background-size: 16px 16px;
+        background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+      }
+      
+      .widget-surface {
+        background-color: var(--surface-container-highest);
+        background-image: linear-gradient(rgba(var(--primary-rgb), 0.05), rgba(var(--primary-rgb), 0.05));
+        transition: background-color 300ms, background-image 300ms;
+      }
+      html.dark .widget-surface {
+        background-color: var(--surface-container-highest);
+        background-image: linear-gradient(rgba(var(--primary-rgb), 0.1), rgba(var(--primary-rgb), 0.1));
+      }
+
+      .liquid-glass {
+        position: relative;
+        isolation: isolate;
+      }
+      .liquid-glass::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+        background-color: rgba(var(--surface-container-highest-rgb), 0.1);
+        box-shadow: inset 0 0.5px 1px rgba(255, 255, 255, 0.2), inset 0 -0.5px 1px rgba(0,0,0,0.1);
+      }
+      html.dark .liquid-glass::before {
+        background-color: rgba(var(--primary-rgb), 0.15);
+      }
+      .liquid-glass::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        filter: url(#glass-distortion);
+        -webkit-filter: url(#glass-distortion);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "framer-motion": "https://esm.sh/framer-motion@^11.0.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-background">
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+      <filter id="glass-distortion">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" stitchTiles="stitch" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </svg>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

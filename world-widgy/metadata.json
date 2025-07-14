@@ -1,0 +1,7 @@
+{
+  "name": "World Widgy",
+  "description": "A dynamic clock app inspired by Android's Material You expressive design language. It displays the current time and supports multiple timezones, presented in a bold and beautiful interface reminiscent of Android widgets.",
+  "version": "1.0.0",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
